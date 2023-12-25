@@ -1,4 +1,5 @@
-#Python Exercises
+# Python Exercises
+
 -Data Structures
 -Functions
 -Conditions & Loops
