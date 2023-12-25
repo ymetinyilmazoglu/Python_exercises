@@ -178,7 +178,7 @@ df.head()
 # Start by writing a function that takes gender and total_bill as parameters. (Includes if-else conditions)
 #######################
 
-# total bill'in kadınlar ve erkekler için ortalaması
+# storage of total bill for women and men
 
 f_avg = df[df["sex"]=="Female"]["total_bill"].mean() 
 m_avg = df[df["sex"]=="Male"]["total_bill"].mean() 
