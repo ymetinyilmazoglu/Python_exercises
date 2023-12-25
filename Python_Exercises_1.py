@@ -25,17 +25,21 @@ type(b)
 c = 23 < 22
 type(c)
 
+# Changeable, Sequential
 l = [1, 2, 3, 4, "String", 3.2, False]
 type(l)
 
+# Changeable, Unordered
 d = {"Name": "Jake",
      "Age": [27, 56],
      "Adress": "Downtown"}
 type(d)
 
+# Immutable, Sequential
 t = ("Machine Learning", "Data Science")
 type(t)
 
+# Interchangeable, Unordered + Unique
 s = {"Python", "Machine Learning", "Data Science", "Python"}
 type(s)
 
@@ -45,43 +49,40 @@ type(s)
 
 
 text = "The goal is to turn data into information, and information into insight."
-newtext = text.replace(",", " ").replace(".", " ")
+newtext = text.upper().replace(","," ").replace("."," ").split()
 print(newtext)
 
 
-def a():
-    print(newtext.upper().split())
-
-
-a()
 
 ###############################################
-# GÖREV 3: Verilen liste için aşağıdaki görevleri yapınız.
+# TASK 3: Perform the following tasks for the given list.
 ###############################################
 
 lst = ["D", "A", "T", "A", "S", "C", "I", "E", "N", "C", "E"]
 
-# Adım 1: Verilen listenin eleman sayısına bakın.
+# Step 1: Look at the number of elements of the given list.
 len(lst)
 
-# Adım 2: Sıfırıncı ve onuncu index'teki elemanları çağırın.
+# Step 2: Call the elements at the zeroth and tenth index.
 lst[0]
 lst[10]
 
-# Adım 3: Verilen liste üzerinden ["D","A","T","A"] listesi oluşturun.
+# Step 3: Create list ["D","A","T","A"] from the given list.
 lst2 = lst[0:4]
+lst2
 
-# Adım 4: Sekizinci index'teki elemanı silin.
-lst.remove("N")
+# Step 4: Delete the element at the eighth index.
+lst.pop(8)
+lst
 
-# Adım 5: Yeni bir eleman ekleyin.
+# Step 5: Add a new element.
 lst.append("M")
 
-# Adım 6: Sekizinci index'e  "N" elemanını tekrar ekleyin.
+# Step 6: Add element "N" again to the eighth index.
 lst.insert(8, "N")
 
 ###############################################
-# GÖREV 4: Verilen sözlük yapısına aşağıdaki adımları uygulayınız.
+# TASK 4: Apply the following steps to the given dictionary structure.
 ###############################################
 
 dict = {'Christian': ["America", 18],
@@ -89,89 +90,74 @@ dict = {'Christian': ["America", 18],
         'Antonio': ["Spain", 22],
         'Dante': ["Italy", 25]}
 
-# Adım 1: Key değerlerine erişiniz.
+# Step 1: Access the key values.
 
 dict.keys()
 
-# Adım 2: Value'lara erişiniz.
+# Step 2: Access the values.
 
 dict.values()
 
-# Adım 3: Daisy key'ine ait 12 değerini 13 olarak güncelleyiniz.
+# Step 3: Update the value 12 of Daisy key to 13.
 
-dict["Daisy"] = ["England", 13]
+dict.update({"Daisy": ["England",13]})
 dict
-# Adım 4: Key değeri Ahmet value değeri [Turkey,24] olan yeni bir değer ekleyiniz.
 
-dict["Ahmet"] = ["Turkey", 24]
+dict["Daisy"][1] = 14
 dict
-# Adım 5: Antonio'yu dictionary'den siliniz.
+
+# Step 4: Add a new value with the key value Ahmet value [Turkey,24].
+
+dict.update({"Ahmet":["Turkey",24]})
+dict
+
+# Step 5: Delete Antonio from the dictionary.
 
 dict.pop("Antonio")
 dict
 
 ###############################################
-# GÖREV 5: Arguman olarak bir liste alan, listenin içerisindeki tek ve çift sayıları ayrı listelere atıyan ve bu listeleri return eden fonskiyon yazınız.
+# TASK 5: Write a function that takes a list as an argument, assigns the odd and even numbers in the list to separate lists, and returns these lists.
 ###############################################
 
 l = [2, 13, 18, 93, 22]
 
 
-def func():
+def func(l):
     ciftlist = []
     teklist = []
+
     for a in l:
         if a % 2 == 0:
             ciftlist.append(a)
         else:
             teklist.append(a)
+
     return ciftlist, teklist
 
 
-func()
+çift,tek = func(l)
 
 ###############################################
-# GÖREV 6: Aşağıda verilen listede mühendislik ve tıp fakülterinde dereceye giren öğrencilerin isimleri bulunmaktadır.
-# Sırasıyla ilk üç öğrenci mühendislik fakültesinin başarı sırasını temsil ederken son üç öğrenci de tıp fakültesi öğrenci sırasına aittir.
-# Enumarate kullanarak öğrenci derecelerini fakülte özelinde yazdırınız.
+# TASK 6: The list given below contains the names of the students who achieved success in engineering and medical faculties.
+# While the first three students represent the success order of the faculty of engineering, the last three students belong to the student rank of the faculty of medicine.
+# Print student degrees specifically for the faculty using Enumarate.
 ###############################################
 
 ogrenciler = ["Ali", "Veli", "Ayşe", "Talat", "Zeynep", "Ece"]
 
-A = []
-B = []
-for index, öğrenci in enumerate(ogrenciler, 1):
-    if index < 4:
-        A.append(öğrenci)
-for index, öğrenci in enumerate(A, 1):
-    if index == 1:
-        print("Mühendislik Fakültesi 1.öğrenci:", öğrenci)
-    elif index == 2:
-        print("Mühendislik Fakültesi 2.öğrenci:", öğrenci)
+for i,x in enumerate(ogrenciler):
+    if i<3:
+        i += 1
+        print("Mühendislik Fakültesi",i,". öğrenci: ",x)
     else:
-        print("Mühendislik Fakültesi 3.öğrenci:", öğrenci)
-for index, öğrenci in enumerate(ogrenciler, 1):
-    if index >= 4:
-        B.append(öğrenci)
-for index, öğrenci in enumerate(B, 1):
-    if index == 1:
-        print("Tıp Fakültesi 1.öğrenci:", öğrenci)
-    elif index == 2:
-        print("Tıp Fakültesi 2.öğrenci:", öğrenci)
-    else:
-        print("Tıp Fakültesi 3.öğrenci:", öğrenci)
+        i -= 2
+        print("Tıp Fakültesi",i,". öğrenci: ",x)
 
-##Tahir'in çözümü
-ogrenciler = ["Ali", "Veli", "Ayşe", "Talat", "Zeynep", "Ece"]
 
-for index, ogrenci in enumerate(ogrenciler):
-    if index < 3:
-        print("Mühendislik Fakültesi {}. öğrenci: {}".format(index + 1, ogrenci))
-    else:
-        print("Tıp Fakültesi {}. öğrenci: {}".format(index - 2, ogrenci))
 
 ###############################################
-# GÖREV 7: Aşağıda 3 adet liste verilmiştir. Listelerde sırası ile bir dersin kodu, kredisi ve kontenjan bilgileri yer almaktadır. Zip kullanarak ders bilgilerini bastırınız.
+# TASK 7: Below are 3 lists. The lists contain the code, credit and quota information of a course, respectively. Print the course information using Zip.
 ###############################################
 
 ders_kodu = ["CMP1005", "PSY1001", "HUK1005", "SEN2204"]
@@ -181,8 +167,8 @@ kontenjan = [30, 75, 150, 25]
 list(zip(ders_kodu, kredi, kontenjan))
 
 ###############################################
-# GÖREV 8: Aşağıda 2 adet set verilmiştir.
-# Sizden istenilen eğer 1. küme 2. kümeyi kapsiyor ise ortak elemanlarını eğer kapsamıyor ise 2. kümenin 1. kümeden farkını yazdıracak fonksiyonu tanımlamanız beklenmektedir.
+# TASK 8: Below are 2 sets.
+# You are expected to define the function that will print the common elements of the 1st set if it covers the 2nd set, and the difference of the 2nd set from the 1st set if it does not.
 ###############################################
 
 kume1 = set(["data", "python"])
@@ -198,22 +184,4 @@ farkbulma()
 kume2.intersection(kume1)
 kume2.issuperset(kume1)
 
-## Bahar'ın çözümü
-kume1 = set(["data", "python"])
-kume2 = set(["data", "function", "qcut", "lambda", "python", "miuul"])
-
-
-def fark_set(kume1, kume2):
-    if kume1.issuperset(kume2):
-        print(kume1.intersection(kume2))
-    else:
-        print(kume2.difference(kume1))
-
-
-fark_set(kume1, kume2)
-
-print("hello")
-print("metooo")
-
-print(4 + 9)
 
